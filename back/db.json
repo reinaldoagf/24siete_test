@@ -1,3 +1,60 @@
 {
-    
+    "doctores":[
+       {
+          "id":"1",
+          "nombre":"Dr. Juan Pérez",
+          "especialidad":"Cardiología",
+          "ubicacion":{
+             "ciudad":"Ciudad de México",
+             "direccion":"Calle 123, Colonia Centro"
+          },
+          "status":"pendiente por verificar"
+       },
+       {
+          "id":"2",
+          "nombre":"Dra. Ana Gómez",
+          "especialidad":"Pediatría",
+          "ubicacion":{
+             "ciudad":"Guadalajara",
+             "direccion":"Av. Libertad 456, Zona Centro"
+          },
+          "status":"verificado"
+       }
+    ],
+    "pacientes":[
+       {
+          "id":"1",
+          "nombre":"Carlos López",
+          "edad":45,
+          "genero":"Masculino",
+          "telefono":"555-1234",
+          "direccion":"Av. Siempre Viva 742"
+       },
+       {
+          "id":"2",
+          "nombre":"María González",
+          "edad":30,
+          "genero":"Femenino",
+          "telefono":"555-5678",
+          "direccion":"Calle Falsa 123"
+       }
+    ],
+    "citas":[
+       {
+          "id":"1",
+          "pacienteId":"1",
+          "doctorId":"1",
+          "fecha":"2024-10-10",
+          "hora":"10:00 AM",
+          "status":"pendiente por aprobar"
+       },
+       {
+          "id":"2",
+          "pacienteId":"2",
+          "doctorId":"2",
+          "fecha":"2024-10-12",
+          "hora":"3:00 PM",
+          "status":"aprobado"
+       }
+    ]
 }

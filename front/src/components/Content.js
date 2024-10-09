@@ -1,28 +1,43 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAppointments } from "../redux/features/appointmentsSlice";
+import { fetchDoctors } from '../redux/features/doctorsSlice';
+import { fetchPatients } from '../redux/features/patientsSlice';
 import ArtworkSelector from "./ArtworkSelector";
 import KeyPerformanceIndicator from "./KeyPerformanceIndicator";
-import "chart.js/auto";
-import { Chart } from "react-chartjs-2";
-
-
 
 export default function Content() {
   const dispatch = useDispatch();
-
+  /* citas */
   const appointments = useSelector((state) => state.appointments.appointments);
-  const status = useSelector((state) => state.appointments.status);
-  const error = useSelector((state) => state.appointments.error);
+  const appointmentsStatus = useSelector((state) => state.appointments.status);
+  /* const appontmentsError = useSelector((state) => state.appointments.error); */
+
+  /* doctores */
+  const doctors = useSelector((state) => state.doctors.doctors);
+  const doctorsStatus = useSelector((state) => state.doctors.status);
+  /* const error = useSelector((state) => state.doctors.error); */
+
+  /* pacientes */
+  const patients = useSelector((state) => state.patients.patients);
+  const patientsStatus = useSelector((state) => state.patients.status);
+  /* const error = useSelector((state) => state.patients.error); */
 
   useEffect(() => {
-    if (status === "idle") {
+    if (appointmentsStatus === 'idle') {
       dispatch(fetchAppointments());
     }
-  }, [status, dispatch]);
+    if (doctorsStatus === 'idle') {
+      dispatch(fetchDoctors());
+    }
+    if (patientsStatus === 'idle') {
+      dispatch(fetchPatients());
+    }
+  }, [appointmentsStatus, doctorsStatus, patientsStatus, dispatch]);
 
-  if (status === "loading") return <p>Loading...</p>;
-  if (status === "failed") return <p>Error: {error}</p>;
+ /*  if (status === "loading") return <p>Loading...</p>;
+  if (status === "failed") return <p>Error: {error}</p>; */
+  /* citas */
 
   return (
     <>
@@ -38,48 +53,41 @@ export default function Content() {
           </ul>
         </div>
       </div>
-      <div className="py-4 grid gap-4 grid-cols-2">
+      <div className="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
         <KeyPerformanceIndicator
           data={{
             title: "Total de citas aprobadas",
-            appointments: appointments.filter((e) => e.status === "aprobado"),
+            entity: 'appointments', 
+            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+            elements: appointments.filter((e) => e.status === "aprobado"),
           }}
         />
         <KeyPerformanceIndicator
           data={{
-            title: "Total de citas aprobadas",
-            appointments: appointments.filter((e) => e.status === "pendiente por aprobar"),
+            title: "Total de citas pendientes",
+            entity: 'appointments', 
+            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+            elements: appointments.filter((e) => e.status === "pendiente por aprobar"),
+          }}
+        />
+        <KeyPerformanceIndicator
+          data={{
+            title: "Total de doctores",
+            entity: 'doctors', 
+            status: doctorsStatus, /*  (status === "loading") (status === "failed") */
+            elements: doctors,
+          }}
+        />
+        <KeyPerformanceIndicator
+          data={{
+            title: "Total de pacientes",
+            entity: 'patients', 
+            status: patientsStatus, /*  (status === "loading") (status === "failed") */
+            elements: patients,
           }}
         />
       </div>
-      {/* <div>
-      <Chart type='line' data={{
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-}} />
-      </div> */}
+      {/* */}
     </>
   );
 }

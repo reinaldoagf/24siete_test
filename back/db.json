@@ -1,6 +1,6 @@
 {
-    "doctores":[
-       {
+   "doctores":[
+      {
           "id":"1",
           "nombre":"Dr. Juan Pérez",
           "especialidad":"Cardiología",
@@ -9,8 +9,8 @@
              "direccion":"Calle 123, Colonia Centro"
           },
           "status":"pendiente por verificar"
-       },
-       {
+      },
+      {
           "id":"2",
           "nombre":"Dra. Ana Gómez",
           "especialidad":"Pediatría",
@@ -19,7 +19,27 @@
              "direccion":"Av. Libertad 456, Zona Centro"
           },
           "status":"verificado"
-       }
+       },
+       {
+           "id":"3",
+           "nombre":"Dra. Ana Hernández",
+           "especialidad":"Pediatría",
+           "ubicacion":{
+              "ciudad":"Guadalajara",
+              "direccion":"Av. Libertad 456, Zona Centro"
+           },
+           "status":"verificado"
+        },
+        {
+            "id":"4",
+            "nombre":"Dr. Diego Gutiérrez",
+            "especialidad":"Odontología",
+            "ubicacion":{
+               "ciudad":"Guadalajara",
+               "direccion":"Av. Libertad 456, Zona Centro"
+            },
+            "status":"pendiente por verificar"
+         }
     ],
     "pacientes":[
        {
@@ -60,7 +80,7 @@
           "id":"2",
           "pacienteId":"2",
           "doctorId":"2",
-          "fecha":"2024-10-12",
+          "fecha":"2024-10-01",
           "hora":"3:00 PM",
           "status":"aprobado"
        },
@@ -68,7 +88,7 @@
           "id":"3",
           "pacienteId":"2",
           "doctorId":"1",
-          "fecha":"2024-09-12",
+          "fecha":"2024-09-15",
           "hora":"3:00 PM",
           "status":"aprobado"
        },

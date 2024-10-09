@@ -37,6 +37,14 @@
           "genero":"Femenino",
           "telefono":"555-5678",
           "direccion":"Calle Falsa 123"
+       },
+       {
+          "id":"3",
+          "nombre":"Oriana González",
+          "edad":26,
+          "genero":"Femenino",
+          "telefono":"555-5678",
+          "direccion":"Calle Falsa 123"
        }
     ],
     "citas":[
@@ -54,6 +62,54 @@
           "doctorId":"2",
           "fecha":"2024-10-12",
           "hora":"3:00 PM",
+          "status":"aprobado"
+       },
+       {
+          "id":"3",
+          "pacienteId":"2",
+          "doctorId":"1",
+          "fecha":"2024-09-12",
+          "hora":"3:00 PM",
+          "status":"aprobado"
+       },
+       {
+          "id":"4",
+          "pacienteId":"2",
+          "doctorId":"1",
+          "fecha":"2024-09-15",
+          "hora":"4:00 PM",
+          "status":"aprobado"
+       },
+       {
+          "id":"5",
+          "pacienteId":"3",
+          "doctorId":"1",
+          "fecha":"2024-09-21",
+          "hora":"2:00 PM",
+          "status":"pendiente por aprobar"
+       },
+       {
+          "id":"6",
+          "pacienteId":"3",
+          "doctorId":"1",
+          "fecha":"2024-10-07",
+          "hora":"2:00 PM",
+          "status":"aprobado"
+       },
+       {
+          "id":"7",
+          "pacienteId":"3",
+          "doctorId":"1",
+          "fecha":"2024-10-05",
+          "hora":"2:00 PM",
+          "status":"aprobado"
+       },
+       {
+          "id":"8",
+          "pacienteId":"3",
+          "doctorId":"2",
+          "fecha":"2024-09-05",
+          "hora":"2:00 PM",
           "status":"aprobado"
        }
     ]

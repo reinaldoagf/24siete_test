@@ -1,10 +1,10 @@
-// src/features/appointmentsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Async thunk to fetch appointments
 export const fetchAppointments = createAsyncThunk('appointments/fetchAppointments', async () => {
   const response = await axios.get('http://localhost:3000/citas');
+  console.log({ response })
   return response.data;
 });
 

@@ -53,11 +53,21 @@ export default function Content() {
           </ul>
         </div>
       </div>
-      <div className="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
+      <div className="py-4 grid gap-4 md:grid-cols-3 grid-cols-1">
+        <KeyPerformanceIndicator
+          data={{
+            title: "Total de citas",
+            entity: 'appointments', 
+            filterType: 'daterange', 
+            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+            elements: appointments,
+          }}
+        />
         <KeyPerformanceIndicator
           data={{
             title: "Total de citas aprobadas",
             entity: 'appointments', 
+            filterType: 'select', 
             status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
             elements: appointments.filter((e) => e.status === "aprobado"),
           }}
@@ -66,14 +76,18 @@ export default function Content() {
           data={{
             title: "Total de citas pendientes",
             entity: 'appointments', 
+            filterType: 'select', 
             status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
             elements: appointments.filter((e) => e.status === "pendiente por aprobar"),
           }}
         />
+      </div>
+      <div className="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
         <KeyPerformanceIndicator
           data={{
             title: "Total de doctores",
             entity: 'doctors', 
+            filterType: 'select', 
             status: doctorsStatus, /*  (status === "loading") (status === "failed") */
             elements: doctors,
           }}
@@ -82,12 +96,12 @@ export default function Content() {
           data={{
             title: "Total de pacientes",
             entity: 'patients', 
+            filterType: 'select', 
             status: patientsStatus, /*  (status === "loading") (status === "failed") */
             elements: patients,
           }}
         />
       </div>
-      {/* */}
     </>
   );
 }

@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from "react";
-import "chart.js/auto";
-import { Chart } from "react-chartjs-2";
+import React, { useEffect, useState } from 'react';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import 'chart.js/auto';
+import { Chart } from 'react-chartjs-2';
+import dayjs from 'dayjs';
 
 export default function KeyPerformanceIndicator({ data }) {
+  const {entity, elements, title, filterType} = data
+  /* daterange */
+  // Estado para almacenar el rango de fechas seleccionado
+  const [dateRange, setDateRange] = React.useState([null, null]);
+
   const [selectedOption, setSelectedOption] = useState("");
   const [filteredElements, setFilteredElements] = useState(0);
   const [options, setOptions] = useState([]);
 
   /* Chart */  
   const [backgroundColor, setBackgroundColor] = useState([
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)',]);
+    'rgba(255, 99, 132, 0.2)',]);
 
-    const [borderColor, setBorderColor] = useState([ 'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)',]);
+    const [borderColor, setBorderColor] = useState([ 'rgba(255, 99, 132, 1)',]);
    
   const [labelsChart, setLabelsChart] = useState([]);
   const [pieChartsData, setPieChartsData] = useState({
@@ -94,41 +93,55 @@ export default function KeyPerformanceIndicator({ data }) {
     return [selectedOption, 'Otros']
   };
 
-  const generateLastDatesChart = () => {
-    
-
-    const dates = [];
-  const today = new Date();
-
-  for (let i = 0; i < selectedOption; i++) {
-    const date = new Date();
-    date.setDate(today.getDate() - i);
-    
-    // Formatear la fecha a "YYYY-MM-DD"
-    const dia = date.getDate().toString().padStart(2, '0');
-    const mes = (date.getMonth() + 1).toString().padStart(2, '0'); // Los meses comienzan desde 0
-    const anio = date.getFullYear();
-    
-    dates.push(`${anio}-${mes}-${dia}`);
+  
+  const generateDateRangeChart = (start, end) => {
+    const startDate = dayjs(start);
+    const endDate = dayjs(end);
+    const dateRange = [];
+  
+    // Iteramos desde la fecha de inicio hasta la fecha final, agregando cada fecha al array
+    let currentDate = startDate;
+    while (currentDate.isBefore(endDate) || currentDate.isSame(endDate)) {
+      dateRange.push(currentDate.format('YYYY-MM-DD'));
+      currentDate = currentDate.add(1, 'day'); // Suma un día
+    }
+  
+    return dateRange;
   }
 
-  return dates;
+  const generateLastDatesChart = () => {
+    const dates = [];
+    const today = new Date();
+
+    for (let i = 0; i < selectedOption; i++) {
+      const date = new Date();
+      date.setDate(today.getDate() - i);
+      
+      // Formatear la fecha a "YYYY-MM-DD"
+      const dia = date.getDate().toString().padStart(2, '0');
+      const mes = (date.getMonth() + 1).toString().padStart(2, '0'); // Los meses comienzan desde 0
+      const anio = date.getFullYear();
+      
+      dates.push(`${anio}-${mes}-${dia}`);
+    }
+
+    return dates;
   }
 
   useEffect(() => {
     setFilteredElements(
       selectedOption === ""
         ? 0
-        : data.entity === "appointments"
-        ? calculateLastElements(data.elements)
-        : (data.entity === "doctors" ? calculateSpecialtyElements(data.elements) : calculateGenreElements(data.elements))
+        : entity === "appointments"
+        ? calculateLastElements(elements)
+        : (entity === "doctors" ? calculateSpecialtyElements(elements) : calculateGenreElements(elements))
     );
 
     
     setLabelsChart(
       selectedOption === ""
         ? 0
-        : data.entity === "appointments"
+        : entity === "appointments"
         ? generateLastDatesChart()
         : generateSpecialtiesChart()
     );
@@ -140,10 +153,10 @@ export default function KeyPerformanceIndicator({ data }) {
         ],
         datasets: [{
           label: 'Doctores',
-          data: [data.elements.filter(e => {
-            if((data.entity === "doctors" && e.especialidad !== selectedOption) || (data.entity === "patients" && e.genero !== selectedOption)) return e
-          }).length,data.elements.filter(e => {
-            if((data.entity === "doctors" &&  e.especialidad === selectedOption) || (data.entity === "patients" && e.genero === selectedOption)) return e
+          data: [elements.filter(e => {
+            if((entity === "doctors" && e.especialidad !== selectedOption) || (entity === "patients" && e.genero !== selectedOption)) return e
+          }).length,elements.filter(e => {
+            if((entity === "doctors" &&  e.especialidad === selectedOption) || (entity === "patients" && e.genero === selectedOption)) return e
           }).length],
           backgroundColor: [
             'rgb(228 228 231 / 1)',
@@ -162,7 +175,7 @@ export default function KeyPerformanceIndicator({ data }) {
           {
             label: '# de citas',
             data: labelsChart.length ? labelsChart.map(e => {
-              return data.elements.filter(i => {
+              return elements.filter(i => {
                 if(i.fecha === e) return i
               }).length
             }) : [],
@@ -173,12 +186,24 @@ export default function KeyPerformanceIndicator({ data }) {
         ],
     })
   }, [labelsChart]);
+  
+  useEffect(() => {
+    const [start, end] = dateRange;
+    const formattedStart = start ? dayjs(start).format('YYYY/MM/DD') : '';
+    const formattedEnd = end ? dayjs(end).format('YYYY/MM/DD') : '';
+    console.log({ formattedStart })
+    console.log({ formattedEnd })
+    setLabelsChart(entity === "appointments" && filterType == 'daterange'
+        ? generateDateRangeChart(formattedStart, formattedEnd)
+        : []
+    );
+  }, [dateRange]);
 
   useEffect(() => {
     setOptions(
-      data.entity === "appointments"
+      entity === "appointments"
         ? [7, 15, 30]
-        : (data.entity === "doctors" ? ["Cardiología", "Pediatría", "Odontología"] : ["Masculino", "Femenino"])
+        : (entity === "doctors" ? ["Cardiología", "Pediatría", "Odontología"] : ["Masculino", "Femenino"])
     );
   }, []);
 
@@ -187,40 +212,63 @@ export default function KeyPerformanceIndicator({ data }) {
       <div className="flex justify-between border-b-2 border-gray-200 pb-2">
         <div>
           <h5 className="leading-none text-3xl font-bold text-gray-900 pb-2">
-            {data.elements.length}
+            {elements.length}
           </h5>
-          <p className="text-xs font-normal text-gray-500 ">{data.title}</p>
+          <p className="text-xs font-normal text-gray-500 ">{title}</p>
         </div>
       </div>
         <div className="flex flex-row justify-between py-2">
-          <div className="w-1/2 flex justify-center items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center">
-            {filteredElements} elementos filtrados
+          <div className="w-1/3 flex justify-center items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center">
+            {filteredElements} elementos
           </div>
-          <div className="w-1/2">
-          <select
-            className="appearance-none w-full py-1 px-2 bg-gray-200 rounded-md"
-            name="whatever"
-            id="frm-whatever"
-            value={selectedOption}
-            onChange={handleSelectChange}
-          >
-            <option value="''">
-              {data.entity === "appointments"
-                ? "Filtrar por últimos días"
-                : "Filtrar por especialidad"}
-            </option>
-            {options.map((value, index) => (
-              <option key={index} value={value}>
-                {value} {data.entity === "appointments" ? " días" : ""}
-              </option>
-            ))}
-          </select>
+          <div className="w-3/4">
+          {
+            filterType === 'select' && (
+              <select
+                className="appearance-none w-full py-1 px-2 bg-gray-200 rounded-md"
+                name="whatever"
+                id="frm-whatever"
+                value={selectedOption}
+                onChange={handleSelectChange}
+              >
+                <option value="''">
+                  {entity === "appointments"
+                    ? "Filtrar por últimos días"
+                    : "Filtrar por especialidad"}
+                </option>
+                {options.map((value, index) => (
+                  <option key={index} value={value}>
+                    {value} {entity === "appointments" ? " días" : ""}
+                  </option>
+                ))}
+              </select>
+            )
+          }
+          {
+            filterType === 'daterange' && (
+              <DateRangePicker
+                startText="Inicio"
+                endText="Fin"
+                value={dateRange}
+                onChange={(newDateRange) => {
+                  setDateRange(newDateRange);
+                }}
+                renderInput={(startProps, endProps) => (
+                  <>
+                    <TextField {...startProps} />
+                    <Box sx={{ mx: 2 }}>a</Box>
+                    <TextField {...endProps} />
+                  </>
+                )}
+              />
+            )
+          }
           </div>
         </div>
       {/* border */}
       <div>
         {
-          data.entity === "appointments" ? 
+          entity === "appointments" ? 
           (<Chart type='line' data={lineChartsData} />) :
           (<Chart type='pie' data={pieChartsData} />)
         }      

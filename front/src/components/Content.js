@@ -8,6 +8,8 @@ import KeyPerformanceIndicator from "./KeyPerformanceIndicator";
 
 export default function Content() {
   const dispatch = useDispatch();
+  /* tabs */
+  const selectedTab = useSelector((state) => state.tabs.selectedTab);
   /* citas */
   const appointments = useSelector((state) => state.appointments.appointments);
   const appointmentsStatus = useSelector((state) => state.appointments.status);
@@ -53,36 +55,45 @@ export default function Content() {
           </ul>
         </div>
       </div>
+        {
+          (selectedTab.toLowerCase() === 'todos' || selectedTab.toLowerCase() === 'citas') && (
+            <>
       <div className="py-4 grid gap-4 md:grid-cols-3 grid-cols-1">
-        <KeyPerformanceIndicator
-          data={{
-            title: "Total de citas",
-            entity: 'appointments', 
-            filterType: 'daterange', 
-            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
-            elements: appointments,
-          }}
-        />
-        <KeyPerformanceIndicator
-          data={{
-            title: "Total de citas aprobadas",
-            entity: 'appointments', 
-            filterType: 'select', 
-            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
-            elements: appointments.filter((e) => e.status === "aprobado"),
-          }}
-        />
-        <KeyPerformanceIndicator
-          data={{
-            title: "Total de citas pendientes",
-            entity: 'appointments', 
-            filterType: 'select', 
-            status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
-            elements: appointments.filter((e) => e.status === "pendiente por aprobar"),
-          }}
-        />
+            <KeyPerformanceIndicator
+              data={{
+                title: "Total de citas",
+                entity: 'appointments', 
+                filterType: 'daterange', 
+                status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+                elements: appointments,
+              }}
+            />
+            <KeyPerformanceIndicator
+              data={{
+                title: "Total de citas aprobadas",
+                entity: 'appointments', 
+                filterType: 'select', 
+                status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+                elements: appointments.filter((e) => e.status === "aprobado"),
+              }}
+            />
+            <KeyPerformanceIndicator
+              data={{
+                title: "Total de citas pendientes",
+                entity: 'appointments', 
+                filterType: 'select', 
+                status: appointmentsStatus, /*  (status === "loading") (status === "failed") */
+                elements: appointments.filter((e) => e.status === "pendiente por aprobar"),
+              }}
+            />
       </div>
+            </>
+          )
+        }
       <div className="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
+        {
+          (selectedTab.toLowerCase() === 'todos' || selectedTab.toLowerCase() === 'doctores') && (
+            <>
         <KeyPerformanceIndicator
           data={{
             title: "Total de doctores",
@@ -91,7 +102,12 @@ export default function Content() {
             status: doctorsStatus, /*  (status === "loading") (status === "failed") */
             elements: doctors,
           }}
-        />
+        />  </>
+      )
+    }
+    {
+      (selectedTab.toLowerCase() === 'todos' || selectedTab.toLowerCase() === 'pacientes') && (
+        <>
         <KeyPerformanceIndicator
           data={{
             title: "Total de pacientes",
@@ -100,7 +116,9 @@ export default function Content() {
             status: patientsStatus, /*  (status === "loading") (status === "failed") */
             elements: patients,
           }}
-        />
+        /></>
+      )
+    }
       </div>
     </>
   );

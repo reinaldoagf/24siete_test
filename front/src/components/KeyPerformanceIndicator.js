@@ -191,8 +191,6 @@ export default function KeyPerformanceIndicator({ data }) {
     const [start, end] = dateRange;
     const formattedStart = start ? dayjs(start).format('YYYY/MM/DD') : '';
     const formattedEnd = end ? dayjs(end).format('YYYY/MM/DD') : '';
-    console.log({ formattedStart })
-    console.log({ formattedEnd })
     setLabelsChart(entity === "appointments" && filterType == 'daterange'
         ? generateDateRangeChart(formattedStart, formattedEnd)
         : []

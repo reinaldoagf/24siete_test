@@ -1,21 +1,23 @@
 import React from 'react';
 import { Icons } from '../consts';
+import { useLocation } from 'react-router-dom'; // Importa el hook useLocation
 
-export default function SidebarItem({ text, icon, index }) {
+export default function SidebarItem({ text, icon, path }) {
+    const location = useLocation(); 
+    const isActive = location.pathname === path; 
     return (
-      <li className="relative">
-        {index === 1 ? (
+      <>
+        {isActive? (
           <div className="absolute -left-1 top-0 bg-fuchsia-600 w-2 h-8 rounded-full" />
         ) : null}
-        <a
-          href="#"
+        <div
           className={`pl-4 flex items-center capitalize   ${
-            index === 1 ? 'text-fuchsia-600' : 'text-gray-500'
+            isActive ? 'text-fuchsia-600' : 'text-gray-500'
           }`}
         >
           <span
             className={`bg-gray-200 w-8 h-8 grid place-items-center mr-2 rounded-md ${
-              index === 1 ? 'bg-fuchsia-600' : 'bg-gray-200'
+              isActive ? 'bg-fuchsia-600' : 'bg-gray-200'
             }`}
           >
             <svg
@@ -28,7 +30,7 @@ export default function SidebarItem({ text, icon, index }) {
             </svg>
           </span>
           {text}
-        </a>
-      </li>
+        </div>
+      </>
     );
   }

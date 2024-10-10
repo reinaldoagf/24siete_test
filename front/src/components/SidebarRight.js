@@ -17,7 +17,7 @@ export default function SidebarRight() {
   if (status === 'loading') return <p>Loading...</p>;
   if (status === 'failed') return <p>Error: {error}</p>;
     return (
-      <div className="p-3 md:w-72 shrink-0 md:sticky md:top-16 shrink-0 h-full">
+      <div className="p-3 shrink-0 md:sticky md:top-16 shrink-0 h-full">
         <h2 className="text-xl font-semibold">Doctores</h2>
         <ul className="mt-3 space-y-3">
           {doctors.map(({ nombre, especialidad, image }, index) => (

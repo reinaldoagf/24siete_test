@@ -1,9 +1,9 @@
 import './App.css';
-/* import Doctors from './components/Doctors';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Doctors from './components/Doctors';
 import Patients from './components/Patients';
-import Appointments from './components/Appointments'; */
+import Appointments from './components/Appointments';
 import SidebarLeft from './components/SidebarLeft';
-import SidebarRight from './components/SidebarRight';
 import Header from './components/Header';
 import Content from './components/Content';
 /* import Items from './components/Items'; */
@@ -12,16 +12,26 @@ import Content from './components/Content';
 const App = () => {
   return(
    <>
+   <Router>
       <SidebarLeft />
       <Header />
       <div className="flex flex-col md:flex-row">
         <div className="w-48 hidden lg:block shrink-0" />
         <div className="grow">
-          <Content />
-          {/* <Items /> */}
+          {/* <Content />
+           <Items /> 
+
+ */}
+         <Routes>
+           <Route path="/" element={<Content />} />
+           <Route path="/doctores" element={<Doctors />} />
+           <Route path="/dashboard" element={<Content />} />
+           <Route path="/citas" element={<Appointments />} />
+           <Route path="/pacientes" element={<Patients />} />
+         </Routes>
         </div>
-        <SidebarRight />
       </div>
+      </Router>
     </>
   );
 }

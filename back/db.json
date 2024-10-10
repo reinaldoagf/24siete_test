@@ -1,136 +1,216 @@
 {
-   "doctores":[
-      {
-          "id":"1",
-          "nombre":"Dr. Juan Pérez",
-          "especialidad":"Cardiología",
-          "ubicacion":{
-             "ciudad":"Ciudad de México",
-             "direccion":"Calle 123, Colonia Centro"
-          },
-          "status":"pendiente por verificar"
+  "doctores": [
+    {
+      "id": "1",
+      "nombre": "Dr. Juan Pérez",
+      "especialidad": "Cardiología",
+      "ubicacion": {
+        "ciudad": "Ciudad de México",
+        "direccion": "Calle 123, Colonia Centro"
       },
-      {
-          "id":"2",
-          "nombre":"Dra. Ana Gómez",
-          "especialidad":"Pediatría",
-          "ubicacion":{
-             "ciudad":"Guadalajara",
-             "direccion":"Av. Libertad 456, Zona Centro"
-          },
-          "status":"verificado"
-       },
-       {
-           "id":"3",
-           "nombre":"Dra. Ana Hernández",
-           "especialidad":"Pediatría",
-           "ubicacion":{
-              "ciudad":"Guadalajara",
-              "direccion":"Av. Libertad 456, Zona Centro"
-           },
-           "status":"verificado"
-        },
-        {
-            "id":"4",
-            "nombre":"Dr. Diego Gutiérrez",
-            "especialidad":"Odontología",
-            "ubicacion":{
-               "ciudad":"Guadalajara",
-               "direccion":"Av. Libertad 456, Zona Centro"
-            },
-            "status":"pendiente por verificar"
-         }
-    ],
-    "pacientes":[
-       {
-          "id":"1",
-          "nombre":"Carlos López",
-          "edad":45,
-          "genero":"Masculino",
-          "telefono":"555-1234",
-          "direccion":"Av. Siempre Viva 742"
-       },
-       {
-          "id":"2",
-          "nombre":"María González",
-          "edad":30,
-          "genero":"Femenino",
-          "telefono":"555-5678",
-          "direccion":"Calle Falsa 123"
-       },
-       {
-          "id":"3",
-          "nombre":"Oriana González",
-          "edad":26,
-          "genero":"Femenino",
-          "telefono":"555-5678",
-          "direccion":"Calle Falsa 123"
-       }
-    ],
-    "citas":[
-       {
-          "id":"1",
-          "pacienteId":"1",
-          "doctorId":"1",
-          "fecha":"2024-10-10",
-          "hora":"10:00 AM",
-          "status":"pendiente por aprobar"
-       },
-       {
-          "id":"2",
-          "pacienteId":"2",
-          "doctorId":"2",
-          "fecha":"2024-10-01",
-          "hora":"3:00 PM",
-          "status":"aprobado"
-       },
-       {
-          "id":"3",
-          "pacienteId":"2",
-          "doctorId":"1",
-          "fecha":"2024-09-15",
-          "hora":"3:00 PM",
-          "status":"aprobado"
-       },
-       {
-          "id":"4",
-          "pacienteId":"2",
-          "doctorId":"1",
-          "fecha":"2024-09-15",
-          "hora":"4:00 PM",
-          "status":"aprobado"
-       },
-       {
-          "id":"5",
-          "pacienteId":"3",
-          "doctorId":"1",
-          "fecha":"2024-09-21",
-          "hora":"2:00 PM",
-          "status":"pendiente por aprobar"
-       },
-       {
-          "id":"6",
-          "pacienteId":"3",
-          "doctorId":"1",
-          "fecha":"2024-10-07",
-          "hora":"2:00 PM",
-          "status":"aprobado"
-       },
-       {
-          "id":"7",
-          "pacienteId":"3",
-          "doctorId":"1",
-          "fecha":"2024-10-05",
-          "hora":"2:00 PM",
-          "status":"aprobado"
-       },
-       {
-          "id":"8",
-          "pacienteId":"3",
-          "doctorId":"2",
-          "fecha":"2024-09-05",
-          "hora":"2:00 PM",
-          "status":"aprobado"
-       }
-    ]
+      "status": "pendiente por verificar"
+    },
+    {
+      "id": "2",
+      "nombre": "Dra. Ana Gómez",
+      "especialidad": "Pediatría",
+      "ubicacion": {
+        "ciudad": "Guadalajara",
+        "direccion": "Av. Libertad 456, Zona Centro"
+      },
+      "status": "verificado"
+    },
+    {
+      "id": "3",
+      "nombre": "Dra. Ana Hernández",
+      "especialidad": "Pediatría",
+      "ubicacion": {
+        "ciudad": "Guadalajara",
+        "direccion": "Av. Libertad 456, Zona Centro"
+      },
+      "status": "verificado"
+    },
+    {
+      "id": "4",
+      "nombre": "Dr. Diego Gutiérrez",
+      "especialidad": "Odontología",
+      "ubicacion": {
+        "ciudad": "Guadalajara",
+        "direccion": "Av. Libertad 456, Zona Centro"
+      },
+      "status": "pendiente por verificar"
+    }
+  ],
+  "pacientes": [
+    {
+      "id": "1",
+      "nombre": "Carlos López",
+      "edad": 45,
+      "genero": "Masculino",
+      "telefono": "555-1234",
+      "direccion": "Av. Siempre Viva 742"
+    },
+    {
+      "id": "2",
+      "nombre": "María González",
+      "edad": 30,
+      "genero": "Femenino",
+      "telefono": "555-5678",
+      "direccion": "Calle Falsa 123"
+    },
+    {
+      "id": "3",
+      "nombre": "Oriana González",
+      "edad": 26,
+      "genero": "Femenino",
+      "telefono": "555-5678",
+      "direccion": "Calle Falsa 123"
+    }
+  ],
+  "citas": [
+    {
+      "id": "1",
+      "pacienteId": "1",
+      "doctorId": "1",
+      "fecha": "2024-10-10",
+      "hora": "10:00 AM",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "2",
+      "pacienteId": "2",
+      "doctorId": "2",
+      "fecha": "2024-10-01",
+      "hora": "3:00 PM",
+      "status": "aprobado"
+    },
+    {
+      "id": "3",
+      "pacienteId": "2",
+      "doctorId": "1",
+      "fecha": "2024-09-15",
+      "hora": "3:00 PM",
+      "status": "aprobado"
+    },
+    {
+      "id": "4",
+      "pacienteId": "2",
+      "doctorId": "1",
+      "fecha": "2024-09-15",
+      "hora": "4:00 PM",
+      "status": "aprobado"
+    },
+    {
+      "id": "5",
+      "pacienteId": "3",
+      "doctorId": "1",
+      "fecha": "2024-09-21",
+      "hora": "2:00 PM",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "6",
+      "pacienteId": "3",
+      "doctorId": "1",
+      "fecha": "2024-10-07",
+      "hora": "2:00 PM",
+      "status": "aprobado"
+    },
+    {
+      "id": "7",
+      "pacienteId": "3",
+      "doctorId": "1",
+      "fecha": "2024-10-05",
+      "hora": "2:00 PM",
+      "status": "aprobado"
+    },
+    {
+      "id": "8",
+      "pacienteId": "3",
+      "doctorId": "2",
+      "fecha": "2024-09-05",
+      "hora": "2:00 PM",
+      "status": "aprobado"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "test@example.com",
+      "password": "123456",
+      "token": "sampleToken123"
+    },
+    {
+      "id": "6ae6",
+      "email": "reinaldoagf1@gmail.com",
+      "password": "123456",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "5042",
+      "email": "reinaldoagf1@gmail.com",
+      "password": "123456",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "6616",
+      "email": "reinaldoagf1@gmail.com",
+      "password": "12341234",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "6f9c",
+      "email": "admin@test.com",
+      "password": "23412342314",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "4382",
+      "email": "admin@test.com",
+      "password": "12341234",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "4c31",
+      "email": "admin@test.com",
+      "password": "12341234",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "dad3",
+      "email": "admin@test.com",
+      "password": "12341234",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "bc2a",
+      "email": "admin@test.com",
+      "password": "12341234",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "1c62",
+      "email": "admin@test.com",
+      "password": "12345678",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "6219",
+      "email": "admin@test.com",
+      "password": "12345678",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "8952",
+      "email": "admin@test.com",
+      "password": "12345678",
+      "name": "Reinaldo Alonso"
+    },
+    {
+      "id": "41a7",
+      "email": "oriana@test.com",
+      "password": "oriana",
+      "name": "Oriana"
+    }
+  ]
 }

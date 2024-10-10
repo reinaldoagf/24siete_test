@@ -3,6 +3,7 @@ import tabsReducer from './features/tabsSlice';
 import doctorsReducer from './features/doctorsSlice';
 import patientsReducer from './features/patientsSlice';
 import appointmentsReducer from './features/appointmentsSlice';
+import authReducer from './features/authSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     doctors: doctorsReducer,
     patients: patientsReducer,
     appointments: appointmentsReducer,
+    auth: authReducer,
   },
 });
 

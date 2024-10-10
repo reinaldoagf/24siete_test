@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate, Link} from 'react-router-dom';
 import SidebarItem from './SidebarItem';
 import { Icons } from '../consts';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/features/authSlice';
 
 export default function SidebarLeft() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
     return (
       <div className="hidden lg:flex h-screen flex-col justify-between w-48 fixed left-0 top-0 bottom-0 pt-24">
         <ul className="space-y-8">
@@ -22,8 +26,10 @@ export default function SidebarLeft() {
         </ul>
         <div className="pb-5  px-4">
           <hr className="mb-5 text-zinc-700" />
-
-          <a href="#" className="py-2 flex items-center  text-zinc-500">
+          <button onClick={async () => {            
+            await dispatch(logout());
+            navigate('/login', {replace: true}); 
+          }} className="py-2 flex items-center  text-zinc-500">
             <span className="bg-gray-200 w-8 h-8 grid place-items-center mr-2 rounded-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +41,7 @@ export default function SidebarLeft() {
               </svg>
             </span>
             Logout
-          </a>
+          </button>
         </div>
       </div>
     );

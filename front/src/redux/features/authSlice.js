@@ -1,24 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async thunk para hacer el login
-/* export const loginUser = createAsyncThunk(
-  'auth/loginUser',
-  async ({ email, password }, { rejectWithValue }) => {
-    try {
-      const response = await axios.get('http://localhost:3000/users');
-      console.log({response})
-      return response.data     
-      // Se espera que el servidor devuelva un token o la información del usuario
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
- */
-
 export const signupUser = createAsyncThunk('auth/signupUser', async (credentials) => {
-  const response = await axios.post('http://localhost:3000/users', {...credentials}); // Endpoint del signup
+  const response = await axios.post('http://localhost:3000/users', {...credentials, token: credentials.email }); // Endpoint del signup
   return response.data;
 });
 

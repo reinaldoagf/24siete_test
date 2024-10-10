@@ -6,6 +6,8 @@ import { fetchPatients } from "../redux/features/patientsSlice";
 import SidebarRight from "./SidebarRight";
 import ArtworkSelector from "./ArtworkSelector";
 import KeyPerformanceIndicator from "./KeyPerformanceIndicator";
+import Layout from "./Layout";
+
 
 export default function Content() {
   const dispatch = useDispatch();
@@ -43,8 +45,8 @@ export default function Content() {
   /* citas */
 
   return (
-    <>
-      <div className="flex">
+    <Layout>
+      <div className="flex w-100">
         <div className="w-3/4">
           <div className="">
             <h1 className="text-2xl font-bold px-3 mt-3">Dashboard</h1>
@@ -139,6 +141,6 @@ export default function Content() {
           <SidebarRight />
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

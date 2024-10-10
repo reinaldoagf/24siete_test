@@ -136,81 +136,16 @@
   "users": [
     {
       "id": 1,
-      "email": "test@example.com",
+      "email": "admin@test.com",
       "password": "123456",
       "token": "sampleToken123"
     },
     {
-      "id": "6ae6",
+      "id": 2,
       "email": "reinaldoagf1@gmail.com",
       "password": "123456",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "5042",
-      "email": "reinaldoagf1@gmail.com",
-      "password": "123456",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "6616",
-      "email": "reinaldoagf1@gmail.com",
-      "password": "12341234",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "6f9c",
-      "email": "admin@test.com",
-      "password": "23412342314",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "4382",
-      "email": "admin@test.com",
-      "password": "12341234",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "4c31",
-      "email": "admin@test.com",
-      "password": "12341234",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "dad3",
-      "email": "admin@test.com",
-      "password": "12341234",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "bc2a",
-      "email": "admin@test.com",
-      "password": "12341234",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "1c62",
-      "email": "admin@test.com",
-      "password": "12345678",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "6219",
-      "email": "admin@test.com",
-      "password": "12345678",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "8952",
-      "email": "admin@test.com",
-      "password": "12345678",
-      "name": "Reinaldo Alonso"
-    },
-    {
-      "id": "41a7",
-      "email": "oriana@test.com",
-      "password": "oriana",
-      "name": "Oriana"
+      "name": "Reinaldo Alonso",
+      "token": "sampleToken123"
     }
   ]
 }

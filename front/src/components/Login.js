@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from "../redux/features/authSlice";
@@ -8,15 +8,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, token  } = useSelector((state) => state.auth);
+  const { loading, error, token, status  } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(loginUser({ email, password }));
-    if (token) {
-      navigate('/dashboard', {replace: true}); 
-    }
   };
+
+   // Redirige cuando el token esté disponible y la autenticación sea exitosa
+   useEffect(() => {
+    if (token && status === 'succeeded') {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [token, status, navigate]);
 
   return (
     <div className="bg-gray-200 font-sans text-gray-700 h-screen flex items-center">

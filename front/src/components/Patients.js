@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPatients } from '../redux/features/patientsSlice';
+import Layout from "./Layout";
 
 const Patients = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Patients = () => {
 
   
   return (
-    <>
+    <Layout>
       <div className="">
         <h1 className="text-2xl font-bold px-3 mt-3">Pacientes</h1>
       </div>
@@ -58,7 +59,7 @@ const Patients = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </Layout>
   );
 };
 

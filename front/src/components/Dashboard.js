@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+/* import AddIcon from '@mui/icons-material/Add'; */
 import { fetchAppointments } from "../redux/features/appointmentsSlice";
 import { fetchDoctors } from "../redux/features/doctorsSlice";
 import { fetchPatients } from "../redux/features/patientsSlice";
@@ -9,7 +10,7 @@ import KeyPerformanceIndicator from "./KeyPerformanceIndicator";
 import Layout from "./Layout";
 
 
-export default function Content() {
+export default function Dashboard() {
   const dispatch = useDispatch();
   /* tabs */
   const selectedTab = useSelector((state) => state.tabs.selectedTab);

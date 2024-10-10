@@ -71,7 +71,7 @@
     {
       "id": "1",
       "pacienteId": "1",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-10-10",
       "hora": "10:00 AM",
       "status": "pendiente por aprobar"
@@ -79,7 +79,7 @@
     {
       "id": "2",
       "pacienteId": "2",
-      "doctorId": "2",
+      "doctoreId": "2",
       "fecha": "2024-10-01",
       "hora": "3:00 PM",
       "status": "aprobado"
@@ -87,7 +87,7 @@
     {
       "id": "3",
       "pacienteId": "2",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-09-15",
       "hora": "3:00 PM",
       "status": "aprobado"
@@ -95,7 +95,7 @@
     {
       "id": "4",
       "pacienteId": "2",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-09-15",
       "hora": "4:00 PM",
       "status": "aprobado"
@@ -103,7 +103,7 @@
     {
       "id": "5",
       "pacienteId": "3",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-09-21",
       "hora": "2:00 PM",
       "status": "pendiente por aprobar"
@@ -111,7 +111,7 @@
     {
       "id": "6",
       "pacienteId": "3",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-10-07",
       "hora": "2:00 PM",
       "status": "aprobado"
@@ -119,7 +119,7 @@
     {
       "id": "7",
       "pacienteId": "3",
-      "doctorId": "1",
+      "doctoreId": "1",
       "fecha": "2024-10-05",
       "hora": "2:00 PM",
       "status": "aprobado"
@@ -127,21 +127,69 @@
     {
       "id": "8",
       "pacienteId": "3",
-      "doctorId": "2",
+      "doctoreId": "2",
       "fecha": "2024-09-05",
       "hora": "2:00 PM",
       "status": "aprobado"
+    },
+    {
+      "id": "1b5e",
+      "fecha": "2024-10-10",
+      "hora": "10:00 AM",
+      "pacienteId": "1",
+      "doctoreId": "1",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "c04b",
+      "fecha": "2024-10-10",
+      "hora": "10:00 AM",
+      "pacienteId": "1",
+      "doctoreId": "1",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "0111",
+      "fecha": "2024-10-10",
+      "hora": "10:00 AM",
+      "pacienteId": "1",
+      "doctoreId": "1",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "97f3",
+      "fecha": "2024-10-10",
+      "hora": "10:00 AM",
+      "pacienteId": "1",
+      "doctoreId": "1",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "e30f",
+      "fecha": "2024-10-12",
+      "hora": "1:30 PM",
+      "pacienteId": "2",
+      "doctoreId": "2",
+      "status": "pendiente por aprobar"
+    },
+    {
+      "id": "d712",
+      "fecha": "2024-10-12",
+      "hora": "2:50 PM",
+      "pacienteId": "1",
+      "doctoreId": "4",
+      "status": "pendiente por aprobar"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "admin@test.com",
       "password": "123456",
       "token": "sampleToken123"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "reinaldoagf1@gmail.com",
       "password": "123456",
       "name": "Reinaldo Alonso",

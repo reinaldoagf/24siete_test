@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoctors } from "../redux/features/doctorsSlice";
+import Layout from "./Layout";
 
 const Doctors = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Doctors = () => {
   if (status === "failed") return <p>Error: {error}</p>;
 
   return (
-    <>
+    <Layout>
       <div className="">
         <h1 className="text-2xl font-bold px-3 mt-3">Doctores</h1>
       </div>
@@ -65,7 +66,7 @@ const Doctors = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </Layout>
   );
 };
 

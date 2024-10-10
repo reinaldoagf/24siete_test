@@ -60,6 +60,7 @@ export default function Content() {
               </ul>
             </div>
           </div>
+          <hr className="my-2 text-zinc-700"/>
           {(selectedTab.toLowerCase() === "todos" ||
             selectedTab.toLowerCase() === "citas") && (
             <>
